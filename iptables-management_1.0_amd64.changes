@@ -1,0 +1,49 @@
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA512
+
+Format: 1.8
+Date: Mon, 27 Apr 2015 06:50:40 -0400
+Source: iptables-management
+Binary: iptables-management
+Architecture: source all
+Version: 1.0
+Distribution: unstable
+Urgency: low
+Maintainer: Aron Podrigal <aron@mongotel.com>
+Changed-By: Aron Podrigal <aron@mongotel.com>
+Description: 
+ iptables-management - pluggable iptables rules
+Changes: 
+ iptables-management (1.0) unstable; urgency=low
+ .
+   * Initial Release.
+Checksums-Sha1: 
+ ae9172a382442628c71f18d6ee8455bcee7f83cc 1621 iptables-management_1.0.dsc
+ ab56ec741e7d828443f1c13373f7180f3c86f215 7872 iptables-management_1.0.tar.gz
+ 172479c7649beff3ccfbe6150e334be88bc26858 4756 iptables-management_1.0_all.deb
+Checksums-Sha256: 
+ 5af43b68adea9a6a29d8b34654ad499ef83b10ec7cc4ffcfd31b71768d664d9d 1621 iptables-management_1.0.dsc
+ 7f498acc8c5e56352d45af16c4ce262691012858e42d85f51515f40765c8f751 7872 iptables-management_1.0.tar.gz
+ 12e8088179f5e4bb15706a34f2eb64dcd37e795af3c677dc30e45e86fca1d523 4756 iptables-management_1.0_all.deb
+Files: 
+ d56db9371bd355111d0c5f3b4756c34a 1621 admin optional iptables-management_1.0.dsc
+ 92c35e17c87158c15bf4892aada58b7e 7872 admin optional iptables-management_1.0.tar.gz
+ f3f8fc4104bf4c7d94bb5d76abfafda4 4756 admin optional iptables-management_1.0_all.deb
+
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v1.4.12 (GNU/Linux)
+
+iQIcBAEBCgAGBQJVP/hpAAoJEPObmZYaux7v1ucQALGJymW4le8P28igmMLAupNs
+BXIx8ZHmzyBNNZ/sTTBxI8TB1BHogjlD23VPl98Sx9Tu93zl8X1RmJQRppdhB/Ec
+1eqvUs6CfS3Zpl8ZThJCPVfKkzaNyDZeju0CM2a/402+XpM9NQ7gl4120iWLGJtN
+DigUbVQZSSfPMYBj1GbYd7rTq/WrJz57DbHZ3TyFdiIaUHEyTHBf6zQte9RBz8dc
+cG2ZkWiScI3gRYCqrOQ3L3lnMMZPjNnsmf+JaoFWSruS5pmWnBKSEt03JKm1sTWF
+hPJDGTQb0DZmyku79R59Y06sh4bLyPz6SEH8igS8xanX2vTmiLkBFZOOPS/YfJPz
+8kzuD7ROAqrySfE0eMCic7Hv8o6iKxGa4FuZcNCufonbeROUU0a0Cx+m388VkXGj
+1KeatQ/x4rVZlBn8E9iYONkO2Zy3P3QUfPWYojA8qAEv7o7JQj9nwhZEBE0i05gO
+vvlnyPN5JqHeGHeQu+qouxJdYL896wTFMJm8zSpv0a2FUZamDW2yKxVzlmW4Rs91
+JxThetKiwlYXbGbAzSjnWmtriYcMEo6Utjbiddcf9CgGdJqDDV+1QulQiSqxal4k
+4VI9sv3UfgtWrvXM0bHuWAX+lzW137xbzgQAM1G7H+Iw7ZLnxaKfJmwGZ/ZTjdJL
+Kyg1WwYYsxdQKZaY4JkE
+=7IwT
+-----END PGP SIGNATURE-----

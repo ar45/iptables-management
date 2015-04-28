@@ -1,0 +1,117 @@
+.\" $Id: iptables-management.5 5891 27.04.2015 12:53:09Z aron $
+.TH iptables-management 5 27.04.2015 iptabels "iptables-management" 
+.\" Process with
+.\" groff -man -Tascii iptables-management.5
+.\"
+.SH NAME
+iptables-management \- Allows packages to dynamically add / remove iptables rules
+
+.SH SYNOPSIS
+.B service iptables-management 
+.BI [start|stop|restart]
+
+.SH DESCRIPTION
+.B iptables-management
+Provides is a utililty tool for managing iptables rules and is loaded at boot time. It is equivilant to
+.IB iptables-persistent
+by providing almost the exact same functionality in addition to, allowing packages to install rules within the provided directories.
+The rules are generated every time iptables-management is reloaded and is saved to
+.I /etc/iptables/ipv4/rules
+and 
+.I /etc/iptables/ipv6/rules
+from where it is then loaded to
+.I iptabels
+and
+.I ip6tables
+respectivly.
+
+
+.SH DIRECTORY STRUCTURE
+.PD 0
+.I /etc/iptables/
+.br
+.IB /etc/iptables/ipv4/rules 
+- The generated ipv4 rules
+.br
+.IB /etc/iptables/ipv6/rules
+- The generated ipv6 rules
+.br
+.IR /etc/iptables/ipv{4,6}/TABLE/
+- where
+.I TABLE
+is the iptables table (eg. filter, nat, mangle)
+.br
+.IB /etc/iptables/ipv{4,6}/TABLE/CHAIN/
+- where
+.I CHAIN
+is the iptables CHAIN for TABLE
+.br
+.IB /etc/iptables/ipv{4,6}/TABLE/CHAIN/defaults.rules
+- this file is what sets the default target for the chain, this is required for all non-default chains. For default chains, if not present, the default is ACCEPT.
+
+.br
+.IB /etc/iptables/ipv{4,6}/TABLE/CHAIN/0_accept/
+.br
+.IB /etc/iptables/ipv{4,6}/TABLE/CHAIN/0_drop/
+.br
+.IB /etc/iptables/ipv{4,6}/TABLE/CHAIN/1_accept/
+.br
+.IB /etc/iptables/ipv{4,6}/TABLE/CHAIN/1_drop/
+.br
+.IB /etc/iptables/ipv{4,6}/TABLE/CHAIN/{priority}/*.rules
+.br
+
+As you may see there are several directories in which rules may be put. Rules are loaded in their file names sort order. Ordering is performed from within
+.I /etc/iptables/ipv{4,6}/TABLE/CHAIN/
+directory), so that a file named
+.R 0_accept/1.rules
+has higher presedence over a file named
+.R 0_drop/0.rules\fP.
+There is no limit on the number of directories or files within a
+.IR CHAIN\fPs
+sub-directory, and the directory names 0_accept, 0_drop, 1_accept, 1_drop has been arbitrarily chosen.
+The purpose of those directories is to provide sufficient flexibility, while ensuring consistent rules.
+You’d most likely find yourself using iptables rules for one of the first 3 purposes, and not often but still usable, the 4th reason.
+.IP \(bu 4
+1)
+You want to allow access to a service to a restricted / trusted ip address
+.IP \(bu 4
+2)
+Allowing access to everyone on the internet (Your website).
+.IP \(bu 4
+3) You want to block a known list of ip’s from those bad guys.
+.IP \(bu 4
+4) you want to block everyone.
+.P
+The reason I say you’re unlikely to use a rule for the 4th purpose, because thats mostly accomplished by having strict defaults, to drop all incoming packets that don’t match an explicit accept rule.
+
+The 
+.IB .rules
+files within those directories are loaded in their sort order, so files within 
+.IB 0_accept
+are loaded first, then is loaded files in 
+.IB 0_drop\fP, 
+.IB 1_accept
+ and finally files stored in 
+.IB 1_drop\fP.
+As you may realize, the more explicit a rule is, the unlikely it is to match something you wouldn’t want it to match. So here is an example.
+If we have special explicit rules to allow let’s say access to ssh from a trusted ip, we put that rule within the 0_accept directory, without worry about matching something we don’t want to, because the rule indicates exactly what we do want to allow. Now we want to allow everyone on the public internet to access our website listening on port 80, we add a ACCEPT rule in the
+.IB 1_accept
+directory, so that we can have a more explicit rule DROPPING all packets from a known attacker to not have access to our website, which we would then put that DROP rule in the directory named
+.IB 0_drop\fP.
+And finally we can drop all other packets by inserting a rule in the
+.IB 1_drop
+directory.
+
+
+.SH AUTHORS
+.PP
+Authored by Aron Podrigal. <aron@mongotel.com>.
+
+.SH BUGS
+Report bugs to devops@mongotel.com - MongoTEL development
+
+.SH SEE ALSO
+.R iptables-management(8),\ iptables(8),\ IP6TABLES(8)
+.PP
+.nf 

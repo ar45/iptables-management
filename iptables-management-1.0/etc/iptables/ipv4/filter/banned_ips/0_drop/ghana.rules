@@ -1,0 +1,1 @@
+-A banned_ips -s 41.218.192.0/18 -j DROP

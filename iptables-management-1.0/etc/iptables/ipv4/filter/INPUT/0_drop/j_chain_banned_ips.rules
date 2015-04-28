@@ -1,0 +1,2 @@
+# due to weak_host_model we need to filter even on the eth1 local interface
+-A INPUT -j banned_ips

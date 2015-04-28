@@ -1,0 +1,2 @@
+-A banned_ips -s  71.174.98.119 -j DROP
+-A banned_ips -s  74.93.143.69 -j DROP

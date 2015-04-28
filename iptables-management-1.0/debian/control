@@ -1,0 +1,18 @@
+Source: iptables-management
+Section: admin
+Priority: optional
+Maintainer: Aron Podrigal <aron@mongotel.com>
+Uploaders: MongoTEL DevOPS <devops@mongotel.com>
+Build-Depends: debhelper (>= 7.0.50~), po-debconf
+Standards-Version: 3.9.3
+Vcs-Browser: https://github.com/ar45/iptables-management
+Vcs-Git: git://github.com/ar45/iptables-management
+
+Package: iptables-management
+Architecture: all
+Conflicts: iptables-persistent
+Depends: iptables, lsb-base, ${misc:Depends}
+Description: pluggable iptables rules
+ This package provides a common format to maintain plugable rules for iptables.
+ Other packages may install their rules within the designated directories, and
+ call iptables-management reload to take effect.

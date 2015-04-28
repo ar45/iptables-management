@@ -1,0 +1,14 @@
+#!/bin/sh
+
+set -e
+
+case "$1" in
+purge)
+	rm -rf /etc/iptables/rules.v4 \
+		/etc/iptables/rules.v6 \
+		/etc/iptables/ipv4 \
+		/etc/iptables/ipv6
+;;
+esac
+
+#DEBHELPER#

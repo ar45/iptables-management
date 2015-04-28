@@ -1,0 +1,12 @@
+### define table filter ###
+*filter
+# CHAIN OUTPUT
+:OUTPUT DROP [0:0]
+# CHAIN INPUT
+:INPUT DROP [0:0]
+# CHAIN FORWARD
+:FORWARD DROP [0:0]
+
+
+COMMIT
+

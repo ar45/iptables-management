@@ -1,0 +1,5 @@
+iptables-management (1.0) unstable; urgency=low
+
+  * Initial Release.
+
+ -- Aron Podrigal <aron@mongotel.com>  Mon, 27 Apr 2015 06:50:40 -0400
